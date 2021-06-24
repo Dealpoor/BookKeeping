@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="classification_select">#f53b57</color>
+    <color name="classification_no_select">#cdcdcd</color>
+    <color name="classification_del">#d2dae2</color>
+    <color name="classification_dialog_cancel">#808e9b</color>
+
+    <color name="classification_add_back_add_color">#f9f9f9</color>
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+
+    <!--种类fragment页面文字-->
+    <string name="classification_fragment_title">种类</string>
+    <string name="classification_fragment_title_add">添加</string>
+
+
+    <!--添加种类Activity页面文字-->
+    <string name="classification_activity_add_title">添加种类</string>
+    <string name="classification_activity_add_save">保存</string>
+
+    <string name="classification_activity_add_toast_menu_name">产品名称不可为空！</string>
+    <string name="classification_activity_add_toast_menu_num">产品数量不可为空！</string>
+
+    <string name="classification_activity_add_hint_menu_name">请填写产品名称</string>
+    <string name="classification_activity_add_hint_menu_num">请填写产品数量</string>
+
+
+    <!--种类fragment弹出框文字-->
+    <string name="classification_dialog_hint_add_num">请输入你要增加的数量！</string>
+    <string name="classification_dialog_hint_del_num">请输入你要减少的数量！</string>
+    <string name="classification_dialog_toast_num">数字不可为空！</string>
+
+    <string name="classification_dialog_confirm">确定</string>
+    <string name="classification_dialog_cancel">取消</string>
+
+</resources>
