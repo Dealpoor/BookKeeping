@@ -16,6 +16,10 @@ interface RecordDao {
      * 操作记录数据库
      */
 
+    //查询所有
+    @Query("select * from record")
+    fun getAllRecord(): List<Record>
+
     //查询(根据时间段去查询当前时间下的所有记录）
     @Query("select * from record where record_time >= :startTime and record_time <= :endTime")
     fun getRecordByTime(startTime: String, endTime: String): Record

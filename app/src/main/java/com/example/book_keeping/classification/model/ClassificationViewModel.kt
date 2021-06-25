@@ -17,10 +17,4 @@ class ClassificationViewModel : ViewModel() {
         val list = menuDao.getMenuAll()
         itemListLiveData.postValue(list)
     }
-
-    //加号的点击事件，主要操作有两个，第一个是把菜单里面的数量进行更改
-    //第二个是把这个记录保存到本地上面去
-    fun addMenuNum(menu: Menu,reocrd : Record,menuDao: MenuDao){
-
-    }
 }

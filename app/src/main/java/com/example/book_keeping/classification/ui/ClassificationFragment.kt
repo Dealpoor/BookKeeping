@@ -14,9 +14,12 @@ import com.example.book_keeping.common.db.AppDatabase
 import com.example.book_keeping.common.db.MenuDao
 import com.example.book_keeping.common.db.RecordDao
 import com.example.book_keeping.common.db.entity.Menu
+import com.example.book_keeping.common.db.entity.Record
 import com.example.book_keeping.utils.showDialogYN
 import kotlinx.android.synthetic.main.classification_fragment_layout.*
 import kotlinx.android.synthetic.main.common_title_layout.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * Created by 虫虫 on 2021/6/17
@@ -26,6 +29,8 @@ class ClassificationFragment : BaseFragment() {
     private lateinit var menuDao: MenuDao
 
     private lateinit var recordDao: RecordDao
+
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
     private lateinit var startActivitylaunch: ActivityResultLauncher<Intent>
 
@@ -93,6 +98,7 @@ class ClassificationFragment : BaseFragment() {
                 if (view.id == R.id.iv_add) {
                     //加
                     showDialogYN(
+                        position,
                         mData[position].menuName,
                         mData[position].menuId,
                         mData[position].menuNum,
@@ -104,6 +110,7 @@ class ClassificationFragment : BaseFragment() {
                 } else if (view.id == R.id.iv_del) {
                     //减
                     showDialogYN(
+                        position,
                         mData[position].menuName,
                         mData[position].menuId,
                         mData[position].menuNum,
@@ -132,18 +139,47 @@ class ClassificationFragment : BaseFragment() {
     /**
      * 弹出框的确定按钮回调
      */
-    private fun confirm(num: Long, flag: Int, menuName: String, menuId: Long, menuNum: Long) {
+    private fun confirm(
+        position: Int,
+        num: Long,
+        flag: Int,
+        menuName: String,
+        menuId: Long,
+        menuNum: Long
+    ) {
+        //获取系统当前时间
+        val current = LocalDateTime.now()
+        val formatted = current.format(formatter)
+
         when (flag) {
             //加
             FLAG_ADD -> {
                 val count = menuNum + num
-                val record = "${menuName}增加了${menuNum}"
+                val record = "$formatted : ${menuName}增加了${num}"
+
+                //修改菜单数量
+                menuDao.updateMenuNum(menuId, count)
+                //新增一条记录
+                recordDao.addRecord(Record(0, menuId, record, formatted))
+
+                //刷新页面
+                mData[position].menuNum = count
+                mAdapter.notifyDataSetChanged()
             }
 
             //减
             FLAG_DEL -> {
                 val count = menuNum - num
-                val record = "${menuName}减少了${menuNum}"
+                val record = "$formatted : ${menuName}减少了${num}"
+
+                //修改菜单数量
+                menuDao.updateMenuNum(menuId, count)
+                //新增一条记录
+                recordDao.addRecord(Record(0, menuId, record, formatted))
+
+                //刷新页面
+                mData[position].menuNum = count
+                mAdapter.notifyDataSetChanged()
             }
         }
     }
