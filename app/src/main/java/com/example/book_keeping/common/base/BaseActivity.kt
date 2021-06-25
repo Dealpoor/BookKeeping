@@ -18,7 +18,6 @@ abstract class BaseActivity : AppCompatActivity(){
         setContentView(initLayout())
         initView()
         initData()
-        steepStatusBar()
     }
 
     //设置布局
@@ -29,27 +28,4 @@ abstract class BaseActivity : AppCompatActivity(){
 
     //初始化数据
     abstract fun initData()
-
-    private fun steepStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true)
-            val tintManager = SystemBarTintManager(this)
-            tintManager.setStatusBarTintEnabled(true)
-            tintManager.setStatusBarTintResource(R.color.classification_select) //通知栏所需颜色
-        }
-
-    }
-
-    @TargetApi(19)
-    private fun setTranslucentStatus(on: Boolean) {
-        val win = window
-        val winParams = win.attributes
-        val bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-        if (on) {
-            winParams.flags = winParams.flags or bits
-        } else {
-            winParams.flags = winParams.flags and bits.inv()
-        }
-        win.attributes = winParams
-    }
 }

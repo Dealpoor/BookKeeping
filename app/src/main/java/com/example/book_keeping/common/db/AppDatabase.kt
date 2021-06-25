@@ -12,6 +12,7 @@ import com.example.book_keeping.common.db.entity.Record
 
 /**
  * Created by 虫虫 on 2021/6/21
+ * 统一管理各种表和数据库
  */
 @Database(entities = [Menu::class, Record::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

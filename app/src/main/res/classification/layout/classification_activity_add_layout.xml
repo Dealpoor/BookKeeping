@@ -10,10 +10,6 @@
     tools:context=".classification.ui.ClassificationAddActivity">
 
 
-    <include
-        android:id="@+id/title"
-        layout="@layout/common_title_layout" />
-
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
@@ -39,28 +35,31 @@
         <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:background="@null"
             android:hint="@string/classification_activity_add_hint_menu_name"
             android:padding="16dp"
             android:textColor="@color/common_text_color"
             android:textColorHint="#cdcdcd"
-            android:textSize="16dp" />
+            android:textCursorDrawable="@drawable/common_my_cursor"
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/et_num"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_below="@id/view_one"
             android:layout_alignParentEnd="true"
             android:background="@null"
             android:hint="@string/classification_activity_add_hint_menu_num"
-            android:inputType="number|numberDecimal"
+            android:inputType="number"
+            android:maxLength="10"
+            android:textCursorDrawable="@drawable/common_my_cursor"
             android:padding="16dp"
             android:textColor="@color/common_text_color"
             android:textColorHint="#cdcdcd"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <View
             android:id="@+id/view_one"
@@ -71,6 +70,10 @@
             android:layout_marginEnd="22dp"
             android:background="#f2f2f2" />
     </RelativeLayout>
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/common_title_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

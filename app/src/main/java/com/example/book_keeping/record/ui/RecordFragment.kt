@@ -22,8 +22,12 @@ import java.util.*
 
 /**
  * Created by 虫虫 on 2021/6/17
+ * 统计页面
  */
 class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
+
+    //用来格式化时间
+    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     private lateinit var recordDao: RecordDao
 
@@ -32,9 +36,6 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
 
     //创建空集合用来存放MutableLiveData中的数据
     private val mData: MutableList<Record> = mutableListOf()
-
-    //用来格式化时间
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     //初始化布局
     override fun initLayout() = R.layout.record_fragment_layout
@@ -55,32 +56,6 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
         initDateClick()
     }
 
-    private fun initDateClick() {
-        title_right.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val dialog = DatePickerDialog(
-                requireContext(), this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            )
-            dialog.show()
-        }
-    }
-
-    private fun initRefresh() {
-        //设置下拉框的事件
-        swipe_layout.run {
-            setColorSchemeResources(R.color.classification_select)
-            setOnRefreshListener {
-                //下拉的时候查询数据库全部数据
-                mViewModel.getItemList(recordDao)
-                Toast.makeText(context, R.string.record_fragment_refresh_toast, Toast.LENGTH_SHORT)
-                    .show()
-                //关闭下拉刷新
-                isRefreshing = false
-            }
-        }
-    }
-
     override fun initData() {
         //查询所有数据
         mViewModel.getItemList(recordDao)
@@ -93,9 +68,31 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
         initObserver()
     }
 
-    companion object {
-        fun newInstance(): RecordFragment {
-            return RecordFragment()
+    //下拉刷新的点击事件
+    private fun initRefresh() {
+        //设置下拉框的事件
+        swipe_layout.run {
+            setColorSchemeResources(R.color.common_style_color)
+            setOnRefreshListener {
+                //下拉的时候查询数据库全部数据
+                mViewModel.getItemList(recordDao)
+                Toast.makeText(context, R.string.record_fragment_refresh_toast, Toast.LENGTH_SHORT)
+                    .show()
+                //关闭下拉刷新
+                isRefreshing = false
+            }
+        }
+    }
+
+    //日历的点击事件
+    private fun initDateClick() {
+        title_right.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val dialog = DatePickerDialog(
+                requireContext(), this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+            dialog.show()
         }
     }
 
@@ -114,6 +111,7 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
             mAdapter.notifyDataSetChanged()
         })
     }
+
 
     //获取选择的日期，根据日期去数据库查询当前时间段下面的所有数据
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -139,5 +137,11 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
             ).time
 
         mViewModel.getItemByTime(startTime, endTime, recordDao)
+    }
+
+    companion object {
+        fun newInstance(): RecordFragment {
+            return RecordFragment()
+        }
     }
 }

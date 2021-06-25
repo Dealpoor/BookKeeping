@@ -5,6 +5,7 @@ import com.example.book_keeping.common.db.entity.Menu
 
 /**
  * Created by 虫虫 on 2021/6/21
+ * 操作分类数据库
  */
 @Dao
 interface MenuDao {

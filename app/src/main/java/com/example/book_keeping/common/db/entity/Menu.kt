@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 
 /**
  * Created by 虫虫 on 2021/6/21
+ * 菜单表，用来记录当前菜单
  */
 @Entity(tableName = "menu")
 data class Menu(

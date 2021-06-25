@@ -5,19 +5,16 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.book_keeping.common.db.entity.Record
-import java.util.*
 
 /**
  * Created by 虫虫 on 2021/6/23
+ * 操作记录数据库
  */
 @Dao
 interface RecordDao {
-    /**
-     * 操作记录数据库
-     */
 
     //查询所有
-    @Query("select * from record")
+    @Query("select * from record order by record_time desc")
     fun getAllRecord(): List<Record>
 
     //查询(根据时间段去查询当前时间下的所有记录）

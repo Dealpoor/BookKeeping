@@ -7,6 +7,7 @@ import com.example.book_keeping.common.db.entity.Menu
 
 /**
  * Created by 虫虫 on 2021/6/17
+ * 商品页面列表适配器
  */
 class ClassificationFragmentAdapter(
     itemList: MutableList<Menu>

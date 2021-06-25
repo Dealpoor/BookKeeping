@@ -7,6 +7,7 @@ import java.util.*
 
 /**
  * Created by 虫虫 on 2021/6/23
+ * 记录表，用来记录用户操作
  */
 @Entity(tableName = "record")
 data class Record(

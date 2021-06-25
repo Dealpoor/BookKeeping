@@ -8,6 +8,7 @@ import com.example.book_keeping.common.db.entity.Record
 
 /**
  * Created by 虫虫 on 2021/6/17
+ * 操作商品数据库
  */
 class ClassificationViewModel : ViewModel() {
 

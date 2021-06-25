@@ -24,30 +24,21 @@ import java.util.*
 
 /**
  * Created by 虫虫 on 2021/6/17
+ * 分类页面，展示当前添加的各种商品
  */
 class ClassificationFragment : BaseFragment() {
+
+    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     private lateinit var menuDao: MenuDao
 
     private lateinit var recordDao: RecordDao
 
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    private val mData: MutableList<Menu> = mutableListOf()
 
     private lateinit var startActivitylaunch: ActivityResultLauncher<Intent>
 
     private val mViewModel: ClassificationViewModel by viewModels()
-
-    private val mData: MutableList<Menu> = mutableListOf()
-
-    companion object {
-        const val FLAG_ADD = 0
-        const val FLAG_DEL = 1
-
-        //单例模式
-        fun newInstance(): ClassificationFragment {
-            return ClassificationFragment()
-        }
-    }
 
     private val mAdapter: ClassificationFragmentAdapter by lazy {
         ClassificationFragmentAdapter(mData)
@@ -184,6 +175,16 @@ class ClassificationFragment : BaseFragment() {
                 mData[position].menuNum = count
                 mAdapter.notifyDataSetChanged()
             }
+        }
+    }
+
+
+    companion object {
+        const val FLAG_ADD = 0
+        const val FLAG_DEL = 1
+
+        fun newInstance(): ClassificationFragment {
+            return ClassificationFragment()
         }
     }
 }

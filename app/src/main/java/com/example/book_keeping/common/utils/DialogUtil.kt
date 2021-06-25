@@ -5,8 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.book_keeping.R
-import kotlinx.android.synthetic.main.dialog_add_del_layout.view.*
-import java.text.FieldPosition
+import kotlinx.android.synthetic.main.common_dialog_add_del_layout.view.*
 
 /**
  * Created by 虫虫 on 2021/6/23
@@ -31,7 +30,7 @@ fun showDialogYN(
     if (mAlertDialog == null || context != mAlertDialog?.context) {
         mAlertDialog = AlertDialog.Builder(context, R.style.MyDialogStyle).create()//背景透明的dialog
     }
-    val view1 = View.inflate(context, R.layout.dialog_add_del_layout, null)//有ready
+    val view1 = View.inflate(context, R.layout.common_dialog_add_del_layout, null)//有ready
 
     mAlertDialog?.setView(view1)
     mAlertDialog?.show()

@@ -2,18 +2,22 @@ package com.example.book_keeping.main.ui
 
 import androidx.fragment.app.Fragment
 import com.example.book_keeping.R
-import com.example.book_keeping.common.base.BaseActivity
 import com.example.book_keeping.classification.ui.ClassificationFragment
+import com.example.book_keeping.common.base.BaseActivity
 import com.example.book_keeping.record.ui.RecordFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity_layout.*
 
+/**
+ * 主Activity，用来展示两个fragment
+ */
 class MainActivity : BaseActivity() {
 
     private val mFragments = mutableListOf<Fragment>()
+
     private var lastIndex = 0
 
     override fun initLayout(): Int {
-        return R.layout.activity_main
+        return R.layout.main_activity_layout
     }
 
     override fun initView() {
