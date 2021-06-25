@@ -16,6 +16,7 @@ import com.example.book_keeping.common.db.RecordDao
 import com.example.book_keeping.common.db.entity.Menu
 import com.example.book_keeping.utils.showDialogYN
 import kotlinx.android.synthetic.main.classification_fragment_layout.*
+import kotlinx.android.synthetic.main.common_title_layout.*
 
 /**
  * Created by 虫虫 on 2021/6/17
@@ -58,6 +59,9 @@ class ClassificationFragment : BaseFragment() {
     }
 
     override fun initView() {
+        //设置标题文字
+        title_name.text = getString(R.string.classification_fragment_title)
+        titlte_right.text = getString(R.string.classification_fragment_title_add)
         //初始化menuDao
         menuDao = AppDatabase.getInstance(requireContext()).menuDao()
         //初始化recordDao
@@ -71,7 +75,7 @@ class ClassificationFragment : BaseFragment() {
 
     override fun initData() {
         //设置点击添加按钮的点击事件
-        class_add.setOnClickListener {
+        titlte_right.setOnClickListener {
             startActivitylaunch.launch(
                 Intent().setClass(
                     requireContext(),

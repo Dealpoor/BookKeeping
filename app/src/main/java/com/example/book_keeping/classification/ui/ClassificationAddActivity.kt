@@ -9,6 +9,7 @@ import com.example.book_keeping.common.db.AppDatabase
 import com.example.book_keeping.common.db.MenuDao
 import com.example.book_keeping.common.db.entity.Menu
 import kotlinx.android.synthetic.main.classification_activity_add.*
+import kotlinx.android.synthetic.main.common_title_layout.*
 
 class ClassificationAddActivity : BaseActivity() {
 
@@ -20,6 +21,9 @@ class ClassificationAddActivity : BaseActivity() {
 
     override fun initView() {
         menuDao = AppDatabase.getInstance(this).menuDao()
+
+        //设置标题文字
+        title_name.text = getString(R.string.classification_activity_add_title)
     }
 
     override fun initData() {
