@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.classification_fragment_layout.*
 import kotlinx.android.synthetic.main.classification_fragment_layout.rv
 import kotlinx.android.synthetic.main.common_title_layout.*
 import kotlinx.android.synthetic.main.record_fragment_layout.*
+import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -122,8 +123,26 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
 
     //获取选择的日期，根据日期去数据库查询当前时间段下面的所有数据
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val startTime = simpleDateFormat.parse("$year-$month-$dayOfMonth 00:00:00")
-        val endTime = simpleDateFormat.parse("$year-$month-$dayOfMonth 23:59:59")
+        //当前月份加一，因为返回的月份少一个月，他的格式是单数，所以把他前面补0，天数也是一样
+        var thisMonth = "${month + 1}"
+        var thisDayOfMonth = "$dayOfMonth"
+        if (month < 10) {
+            thisMonth = "0${month + 1}"
+        }
+        if (dayOfMonth < 10) {
+            thisDayOfMonth = "0$dayOfMonth"
+        }
+        //将开始时间和结束时间转成时间戳
+        val startTime =
+            simpleDateFormat.parse(
+                "$year-$thisMonth-$thisDayOfMonth 00:00:00",
+                ParsePosition(0)
+            ).time
+        val endTime =
+            simpleDateFormat.parse(
+                "$year-$thisMonth-$thisDayOfMonth 23:59:59",
+                ParsePosition(0)
+            ).time
 
         mViewModel.getItemByTime(startTime, endTime, recordDao)
     }

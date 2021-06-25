@@ -18,6 +18,7 @@ import com.example.book_keeping.common.db.entity.Record
 import com.example.book_keeping.utils.showDialogYN
 import kotlinx.android.synthetic.main.classification_fragment_layout.*
 import kotlinx.android.synthetic.main.common_title_layout.*
+import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -151,7 +152,7 @@ class ClassificationFragment : BaseFragment() {
         val formatted = simpleDateFormat.format(Date())
 
         //将当前时间转成date存储起来
-        val date = simpleDateFormat.parse(formatted)
+        val date = simpleDateFormat.parse(formatted, ParsePosition(0)).time
 
         when (flag) {
             //加

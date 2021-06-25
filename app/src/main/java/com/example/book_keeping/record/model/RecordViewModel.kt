@@ -13,13 +13,15 @@ class RecordViewModel : ViewModel() {
 
     val itemListLiveData = MutableLiveData<List<Record>>()
 
+    //查询record表中的所有数据
     fun getItemList(recordDao: RecordDao) {
         val list = recordDao.getAllRecord()
         itemListLiveData.postValue(list)
     }
 
-    fun getItemByTime(startTime: Date, endTime: Date, recordDao: RecordDao) {
-        val list = recordDao.getRecordByTime(startTime,endTime)
+    //根据时间戳去查询表中的数据
+    fun getItemByTime(startTime: Long, endTime: Long, recordDao: RecordDao) {
+        val list = recordDao.getRecordByTime(startTime, endTime)
         itemListLiveData.postValue(list)
     }
 }
