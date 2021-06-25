@@ -1,24 +1,18 @@
 package com.example.book_keeping.record.ui
 
 import android.app.DatePickerDialog
-import android.util.Log
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.book_keeping.R
-import com.example.book_keeping.classification.model.ClassificationFragmentAdapter
-import com.example.book_keeping.classification.model.ClassificationViewModel
 import com.example.book_keeping.common.base.BaseFragment
 import com.example.book_keeping.common.db.AppDatabase
-import com.example.book_keeping.common.db.MenuDao
 import com.example.book_keeping.common.db.RecordDao
-import com.example.book_keeping.common.db.entity.Menu
 import com.example.book_keeping.common.db.entity.Record
 import com.example.book_keeping.record.model.RecordFragmentAdapter
 import com.example.book_keeping.record.model.RecordViewModel
-import kotlinx.android.synthetic.main.classification_fragment_layout.*
 import kotlinx.android.synthetic.main.classification_fragment_layout.rv
 import kotlinx.android.synthetic.main.common_title_layout.*
 import kotlinx.android.synthetic.main.record_fragment_layout.*
@@ -52,7 +46,7 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     override fun initView() {
         //设置标题文字
         title_name.text = getString(R.string.record_fragment_title)
-        titlte_right.text = getString(R.string.record_fragment_title_right)
+        title_right.text = getString(R.string.record_fragment_title_right)
         //初始化recordDao
         recordDao = AppDatabase.getInstance(requireContext()).recordDao()
         //设置下拉刷新样式
@@ -62,7 +56,7 @@ class RecordFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun initDateClick() {
-        titlte_right.setOnClickListener {
+        title_right.setOnClickListener {
             val calendar = Calendar.getInstance()
             val dialog = DatePickerDialog(
                 requireContext(), this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),

@@ -67,7 +67,7 @@ class ClassificationFragment : BaseFragment() {
     override fun initView() {
         //设置标题文字
         title_name.text = getString(R.string.classification_fragment_title)
-        titlte_right.text = getString(R.string.classification_fragment_title_add)
+        title_right.text = getString(R.string.classification_fragment_title_add)
         //初始化menuDao
         menuDao = AppDatabase.getInstance(requireContext()).menuDao()
         //初始化recordDao
@@ -81,7 +81,7 @@ class ClassificationFragment : BaseFragment() {
 
     override fun initData() {
         //设置点击添加按钮的点击事件
-        titlte_right.setOnClickListener {
+        title_right.setOnClickListener {
             startActivitylaunch.launch(
                 Intent().setClass(
                     requireContext(),
