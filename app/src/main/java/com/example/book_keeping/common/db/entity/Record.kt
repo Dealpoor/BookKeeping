@@ -3,6 +3,8 @@ package com.example.book_keeping.common.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.book_keeping.common.db.Converters
 import java.util.*
 
 /**
@@ -13,5 +15,5 @@ data class Record(
     @PrimaryKey(autoGenerate = true) var recordId: Long,
     @ColumnInfo(name = "menu_id") var menuId: Long,
     @ColumnInfo(name = "record_item") var recordItem: String,
-    @ColumnInfo(name = "record_time") var recordTime: String
+    @ColumnInfo(name = "record_time") var recordTime: Date?
 )

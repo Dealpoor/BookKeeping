@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.book_keeping.common.db.entity.Menu
@@ -13,6 +14,7 @@ import com.example.book_keeping.common.db.entity.Record
  * Created by 虫虫 on 2021/6/21
  */
 @Database(entities = [Menu::class, Record::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun menuDao(): MenuDao

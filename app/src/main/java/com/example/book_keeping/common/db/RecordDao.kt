@@ -21,8 +21,8 @@ interface RecordDao {
     fun getAllRecord(): List<Record>
 
     //查询(根据时间段去查询当前时间下的所有记录）
-    @Query("select * from record where record_time >= :startTime and record_time <= :endTime")
-    fun getRecordByTime(startTime: String, endTime: String): Record
+    @Query("SELECT * FROM record WHERE record_time BETWEEN :startTime AND :endTime")
+    fun getRecordByTime(startTime: Date, endTime: Date): List<Record>
 
     //插入
     @Insert(onConflict = OnConflictStrategy.REPLACE)

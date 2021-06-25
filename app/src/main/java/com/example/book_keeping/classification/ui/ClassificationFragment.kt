@@ -18,8 +18,8 @@ import com.example.book_keeping.common.db.entity.Record
 import com.example.book_keeping.utils.showDialogYN
 import kotlinx.android.synthetic.main.classification_fragment_layout.*
 import kotlinx.android.synthetic.main.common_title_layout.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by 虫虫 on 2021/6/17
@@ -30,7 +30,7 @@ class ClassificationFragment : BaseFragment() {
 
     private lateinit var recordDao: RecordDao
 
-    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     private lateinit var startActivitylaunch: ActivityResultLauncher<Intent>
 
@@ -148,8 +148,10 @@ class ClassificationFragment : BaseFragment() {
         menuNum: Long
     ) {
         //获取系统当前时间
-        val current = LocalDateTime.now()
-        val formatted = current.format(formatter)
+        val formatted = simpleDateFormat.format(Date())
+
+        //将当前时间转成date存储起来
+        val date = simpleDateFormat.parse(formatted)
 
         when (flag) {
             //加
@@ -160,7 +162,7 @@ class ClassificationFragment : BaseFragment() {
                 //修改菜单数量
                 menuDao.updateMenuNum(menuId, count)
                 //新增一条记录
-                recordDao.addRecord(Record(0, menuId, record, formatted))
+                recordDao.addRecord(Record(0, menuId, record, date))
 
                 //刷新页面
                 mData[position].menuNum = count
@@ -175,7 +177,7 @@ class ClassificationFragment : BaseFragment() {
                 //修改菜单数量
                 menuDao.updateMenuNum(menuId, count)
                 //新增一条记录
-                recordDao.addRecord(Record(0, menuId, record, formatted))
+                recordDao.addRecord(Record(0, menuId, record, date))
 
                 //刷新页面
                 mData[position].menuNum = count
