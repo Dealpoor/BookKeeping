@@ -17,8 +17,8 @@
 
 
     <!--种类fragment弹出框文字-->
-    <string name="classification_dialog_hint_add_num">请输入你要增加的数量！</string>
-    <string name="classification_dialog_hint_del_num">请输入你要减少的数量！</string>
+    <string name="classification_dialog_hint_add_num">请输入你要增加的数量</string>
+    <string name="classification_dialog_hint_del_num">请输入你要减少的数量</string>
     <string name="classification_dialog_toast_num">数字不可为空！</string>
 
     <string name="classification_dialog_confirm">确定</string>

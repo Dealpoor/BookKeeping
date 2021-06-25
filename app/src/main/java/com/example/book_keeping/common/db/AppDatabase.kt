@@ -4,13 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.book_keeping.common.db.entity.Menu
 import com.example.book_keeping.common.db.entity.Record
 
 /**
  * Created by 虫虫 on 2021/6/21
  */
-@Database(entities = [Menu::class, Record::class], version = 2)
+@Database(entities = [Menu::class, Record::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun menuDao(): MenuDao
@@ -18,6 +20,12 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun recordDao(): RecordDao
 
     companion object {
+//        private val MIGRATION_1_2 = object : Migration(1,2){
+//            override fun migrate(database: SupportSQLiteDatabase) {
+//
+//            }
+//        }
+
         private var instance: AppDatabase? = null
         fun getInstance(context: Context): AppDatabase {
             if (instance == null) {
@@ -25,11 +33,10 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "User.db" //数据库名称
-                ).allowMainThreadQueries().build()
+                )/*.addMigrations(MIGRATION_1_2)*/
+                    .allowMainThreadQueries().build()
             }
             return instance as AppDatabase
         }
     }
-
-
 }

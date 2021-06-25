@@ -61,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="@String/classification_dialog_cancel"
+        android:text="@string/classification_dialog_cancel"
         android:textColor="@color/classification_dialog_cancel"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@id/view_center"
