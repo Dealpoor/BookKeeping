@@ -3,11 +3,11 @@ package com.example.book_keeping.classification.ui
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.book_keeping.R
-import com.example.book_keeping.classification.model.ClassificationAddViewModel
+import com.example.book_keeping.classification.view_model.ClassificationAddViewModel
 import com.example.book_keeping.common.base.BaseActivity
 import com.example.book_keeping.common.db.AppDatabase
-import com.example.book_keeping.common.db.MenuDao
-import com.example.book_keeping.common.db.entity.Menu
+import com.example.book_keeping.classification.model.MenuDao
+import com.example.book_keeping.classification.model.Menu
 import kotlinx.android.synthetic.main.classification_activity_add_layout.*
 import kotlinx.android.synthetic.main.common_title_layout.*
 

@@ -1,7 +1,6 @@
-package com.example.book_keeping.common.db
+package com.example.book_keeping.classification.model
 
 import androidx.room.*
-import com.example.book_keeping.common.db.entity.Menu
 
 /**
  * Created by 虫虫 on 2021/6/21

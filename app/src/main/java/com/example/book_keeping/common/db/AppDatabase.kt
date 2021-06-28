@@ -4,11 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.book_keeping.common.db.entity.Menu
-import com.example.book_keeping.common.db.entity.Record
+import com.example.book_keeping.classification.model.MenuDao
+import com.example.book_keeping.classification.model.Menu
+import com.example.book_keeping.record.model.Record
+import com.example.book_keeping.record.model.RecordDao
 
 /**
  * Created by 虫虫 on 2021/6/21

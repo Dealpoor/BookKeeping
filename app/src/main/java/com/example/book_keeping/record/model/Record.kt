@@ -1,4 +1,4 @@
-package com.example.book_keeping.common.db.entity
+package com.example.book_keeping.record.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

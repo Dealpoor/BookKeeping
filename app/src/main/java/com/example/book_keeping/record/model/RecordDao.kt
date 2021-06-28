@@ -1,10 +1,9 @@
-package com.example.book_keeping.common.db
+package com.example.book_keeping.record.model
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.book_keeping.common.db.entity.Record
 
 /**
  * Created by 虫虫 on 2021/6/23

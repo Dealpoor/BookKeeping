@@ -1,9 +1,9 @@
-package com.example.book_keeping.record.model
+package com.example.book_keeping.record.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.book_keeping.common.db.RecordDao
-import com.example.book_keeping.common.db.entity.Record
+import com.example.book_keeping.record.model.RecordDao
+import com.example.book_keeping.record.model.Record
 
 /**
  * Created by 虫虫 on 2021/6/25

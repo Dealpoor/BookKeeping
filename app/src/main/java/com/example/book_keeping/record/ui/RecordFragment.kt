@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.book_keeping.R
 import com.example.book_keeping.common.base.BaseFragment
 import com.example.book_keeping.common.db.AppDatabase
-import com.example.book_keeping.common.db.RecordDao
-import com.example.book_keeping.common.db.entity.Record
-import com.example.book_keeping.record.model.RecordFragmentAdapter
-import com.example.book_keeping.record.model.RecordViewModel
+import com.example.book_keeping.record.model.RecordDao
+import com.example.book_keeping.record.model.Record
+import com.example.book_keeping.record.view_model.RecordViewModel
 import kotlinx.android.synthetic.main.classification_fragment_layout.rv
 import kotlinx.android.synthetic.main.common_title_layout.*
 import kotlinx.android.synthetic.main.record_fragment_layout.*

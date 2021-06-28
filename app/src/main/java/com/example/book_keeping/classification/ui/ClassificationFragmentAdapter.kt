@@ -1,9 +1,9 @@
-package com.example.book_keeping.classification.model
+package com.example.book_keeping.classification.ui
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.book_keeping.R
-import com.example.book_keeping.common.db.entity.Menu
+import com.example.book_keeping.classification.model.Menu
 
 /**
  * Created by 虫虫 on 2021/6/17
